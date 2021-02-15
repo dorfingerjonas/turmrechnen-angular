@@ -1,0 +1,17 @@
+<label>
+  <span>Start value: </span>
+  <input #startValue placeholder="start value" type="text">
+</label>
+
+<label>
+  <span>Height: </span>
+  <input #height (change)="validateHeight()" placeholder="Height" type="text">
+</label>
+
+<button (click)="calculate()" [ngClass]="!heightValid ? 'disabled': ''" type="button">Calculate</button>
+
+<p *ngIf="!heightValid" id="errorMessage">Height must be greater or equal 2</p>
+
+<div id='result'>
+  <p *ngFor="let calc of calculations">{{calc.num}} {{calc.symbol}} {{calc.factor}} = {{calc.result}}</p>
+</div>
